@@ -1,0 +1,18 @@
+.Main_home{
+    width: 100%;
+}
+.Textsumm_Box{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Textsum_container{
+    width: 40%;
+    height: 50vh;
+}
+.textsumbtn{
+    margin-top: 20px;
+}
