@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500&family=Roboto:wght@500&display=swap');
 .Main_home{
     width: 100%;
 }
 .Textsumm_Box{
     width: 100%;
-    height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,4 +16,38 @@
 }
 .textsumbtn{
     margin-top: 20px;
+}
+.mainHometext{
+    width: 40%;
+    background-color: rgb(254, 243, 229);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin-top: 20px;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+.textoutputhead{
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Teko', sans-serif;
+
+
+}
+.textoutput{
+    width: 80%;
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.textoutput1{
+    text-align: left;
+    width: 70%;
+    font-size: 12px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
 }

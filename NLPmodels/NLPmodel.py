@@ -44,7 +44,7 @@ class Abstractive_Summarizer:
             Final_summary = blob2.translate(to=lang_detect)
         else:
             Final_summary=summary
-        return {"Length of article before summarisation":len(text.split()),"Summary":Final_summary,"Length of article after summarisation":len(Final_summary.split())}
+        return {"BeforeSummarisation":len(text.split()),"Summary":Final_summary,"AfterSummarisation":len(Final_summary.split())}
 
 
 
