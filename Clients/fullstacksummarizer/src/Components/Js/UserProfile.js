@@ -1,9 +1,20 @@
 import React from 'react'
+import "../Css/userprofile.css"
 
-const UserProfile = () => {
+export const UserProfile = () => {
+  const collectionRef =collection(database,'users');
+
+  const getDatasets = ()=>{
+    getDoc(collectionRef)
+    .then((response)=>{
+      console.log(response.data.map((item)=>{
+        return item.docs();
+      }))
+    })
+  }
   return (
-    <div>UserProfile</div>
+    <div className='user'>
+     Rohit
+    </div>
   )
 }
-
-export default UserProfile

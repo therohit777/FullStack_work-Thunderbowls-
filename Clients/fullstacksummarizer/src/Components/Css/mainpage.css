@@ -14,9 +14,25 @@
     width: 40%;
     height: 50vh;
 }
+
+.SummiTitle{
+    width: 38%;
+    padding: 15px 10px;
+    margin-top: 30px;
+}
 .textsumbtn{
     margin-top: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 12px ;
+    border-radius: 2px;
 }
+.textsumbtn1{
+    padding: 12px 30px;
+    margin-top: 10px;
+}
+
 .mainHometext{
     width: 40%;
     background-color: rgb(254, 243, 229);
@@ -50,4 +66,9 @@
     font-size: 12px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 800;
+}
+.savemessage{
+    font-size: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
 }
