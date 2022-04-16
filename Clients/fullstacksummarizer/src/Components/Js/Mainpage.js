@@ -1,8 +1,9 @@
-import React, { useRef,useState,useEffect } from 'react';
+import React, { useRef,useState,useEffect, useContext } from 'react';
 import "../Css/mainpage.css";
 import { collection, addDoc  } from 'firebase/firestore';
 import database from './Firebase';
 import { Link } from 'react-router-dom';
+import noteContext from './ContextApi';
 
 const Mainpage = () => {
   const summarisation_txt = useRef("");
@@ -11,7 +12,9 @@ const Mainpage = () => {
   const [Backend, setBackend] = useState({});
   const [savemessage, setsavemessage] = useState("All fields are mandatory*")
   const collectionRef =collection(database,'users')
+  const betaid = useContext(noteContext)
 
+  
 
   useEffect(() => {
     fetch(`http://localhost:6001/summarize?article=${frontdata}`)
@@ -20,7 +23,6 @@ const Mainpage = () => {
     )
     .then(data =>{
       setBackend(data);
-      console.log(data);
     })
   }, [frontdata])
  
@@ -46,8 +48,10 @@ const Mainpage = () => {
     }
     else{
       addDoc(collectionRef,{
+        user_id:betaid.state,
         tittle : title,
-        summary : Backend.Summary
+        summary : Backend.Summary,
+
       })
       .then(()=>{
         alert("Data added");
@@ -76,7 +80,8 @@ const Mainpage = () => {
         <p className='savemessage'>{savemessage}</p>
       </div>
       <button className='textsumbtn textsumbtn1' onClick={()=>addDatabase(tittletxt.current.value)}>Save</button>
-      <Link to='/History'><button>Login</button></Link>
+      <Link to='/History'><button>Watch History</button></Link>
+      <Link to='/Login'><button>Logout</button></Link>
     </div>    
   </div>
   )
