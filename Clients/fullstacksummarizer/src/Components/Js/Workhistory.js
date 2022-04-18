@@ -5,17 +5,19 @@ import '../Css/workhistory.css';
 import { BsFillXSquareFill } from "react-icons/bs";
 import { deleteDoc } from 'firebase/firestore';
 import { doc } from 'firebase/firestore';
-import noteContext from './ContextApi';
 import { Link } from 'react-router-dom';
+import { getAuth , onAuthStateChanged } from "firebase/auth";
+
+
 
 
 export const Workhistory = () => {
-
+  const [uid, setuid] = useState("");
   const collectionRef = collection(database,'users');
   const [databasedata, setdatabasedata] = useState({ });
   const [loader, setloader] = useState(false)
   
-  const user_UID = useContext(noteContext);
+ 
 
  
 
@@ -39,6 +41,20 @@ export const Workhistory = () => {
     console.log(databasedata)
    },[])
 
+   
+
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    
+    setuid(user.uid);
+  } else {
+    console.log("No user")
+  }
+});
+
+  
+
 
 
    const deletedata=(id)=>{
@@ -46,7 +62,7 @@ export const Workhistory = () => {
     deleteDoc(docdel)
     .then(()=>{
       alert("Data Deleted");
-      window.location.reload(false);
+      getDatasets()
     })
     .catch((err)=>{
       alert(err.message);
@@ -61,7 +77,7 @@ export const Workhistory = () => {
                 return (
                   <>
                   {
-                  (item.user_id === user_UID.state)?
+                  (item.user_id === uid)?
                     <>
                     <div className='workcontainer'>
                     <div className="delete"><BsFillXSquareFill className='delicon' onClick={()=>deletedata(item.id)}/></div>

@@ -1,9 +1,11 @@
-import React, { useRef,useState,useEffect, useContext } from 'react';
+import React, { useRef,useState,useEffect} from 'react';
 import "../Css/mainpage.css";
 import { collection, addDoc  } from 'firebase/firestore';
 import database from './Firebase';
 import { Link } from 'react-router-dom';
-import noteContext from './ContextApi';
+import { getAuth , onAuthStateChanged } from "firebase/auth";
+
+
 
 const Mainpage = () => {
   const summarisation_txt = useRef("");
@@ -12,8 +14,12 @@ const Mainpage = () => {
   const [Backend, setBackend] = useState({});
   const [savemessage, setsavemessage] = useState("All fields are mandatory*")
   const collectionRef =collection(database,'users')
-  const betaid = useContext(noteContext)
+  const [uide, setuide] = useState("");
 
+
+
+  
+  
   
 
   useEffect(() => {
@@ -23,6 +29,15 @@ const Mainpage = () => {
     )
     .then(data =>{
       setBackend(data);
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setuide(user.uid);
+        } else {
+          console.log("No user")
+      }
+  });
+
     })
   }, [frontdata])
  
@@ -48,7 +63,7 @@ const Mainpage = () => {
     }
     else{
       addDoc(collectionRef,{
-        user_id:betaid.state,
+        user_id: uide,
         tittle : title,
         summary : Backend.Summary,
 

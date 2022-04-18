@@ -7,14 +7,14 @@ import validator from 'validator';
 import {auth,googleProvider} from './Firebase';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import noteContext from './ContextApi';
+
 
 const Login = () => {
   const [logmessage, setlogmessage] = useState("Please enter your credentials");
   const mailtxt = useRef("");
   const passwordtxt =useRef("");
   const navigate = useNavigate();
-  const alpha =useContext(noteContext)
+ 
   
 
 
@@ -58,18 +58,20 @@ const Login = () => {
   }
 
 
-
+  
 
   const signinwithGoogle = () =>{
     auth.signInWithRedirect(googleProvider)
     .then((res) =>{
-      console.log(res.user)
-      navigate('/Home_page');
+      console.log(res.user);
     })
     .catch(function(error) {
-      console.log(error.message)
+      console.log(error.message);
     })
   }
+
+
+  
 
 
   return (

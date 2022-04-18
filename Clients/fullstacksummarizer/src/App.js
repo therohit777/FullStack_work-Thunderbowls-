@@ -8,7 +8,7 @@ import Introduct from "./Components/Js/Introduct";
 import Forgotpass from "./Components/Js/Forgotpass";
 import Passwordsent from "./Components/Js/Passwordsent";
 import { Workhistory } from "./Components/Js/Workhistory";
-import { NoteState } from "./Components/Js/NoteState";
+
 
 
 
@@ -19,7 +19,6 @@ function App() {
   
   return (
     <div className="App">
-      <NoteState>
       <Router>
          <Routes>
                <Route path="/" element={<Introduct />} />
@@ -31,7 +30,6 @@ function App() {
                <Route path="/Passwordsent" element={<Passwordsent />} />
          </Routes>
       </Router> 
-      </NoteState>
     </div>
   );
 }
